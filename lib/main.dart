@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Put a title for the application'),
+        title: const Text('Twitter'),
       ),
       body: Column(
         children: const <Widget>[],
