@@ -1,34 +1,12 @@
-import 'package:demo_one/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 37, 127, 201)),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<SignUp> createState() => _SignUpState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _SignUpState extends State<SignUp> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _signInKey = GlobalKey();
@@ -38,11 +16,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Form(
         key: _signInKey,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <Widget> [
-          const FaIcon(FontAwesomeIcons.twitter, color: Colors.blue, size: 70,),
+          const Image(image: AssetImage('assets/x.png'), width: 100,),
           const SizedBox(height: 20,),
-          // const Image(image: AssetImage('assets/x.png'), width: 100,),
-          const SizedBox(height: 20,),
-          const Text("Log into Twitter", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+          const Text("Sign up to Twitter", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
           Container(
             margin: const EdgeInsets.fromLTRB(15, 30, 15, 0),
             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -89,11 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
             child: TextButton(onPressed: () {
             if(_signInKey.currentState!.validate()) {
               debugPrint("Email $_emailController.text");
-              debugPrint("Email $_passwordController.text");
+              debugPrint("Password $_passwordController.text");
             }
-            }, child: const Text('Log in', style: TextStyle(color: Colors.white, fontSize: 18),))
+            }, child: const Text('Sign up', style: TextStyle(color: Colors.white, fontSize: 18),))
           ),
-          TextButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUp()));}, child: const Text("Don't have an account? Sign up here")),
+          TextButton(onPressed: () {Navigator.of(context).pop();}, child: const Text("Already have an account? Sign in")),
         ],)
       ),
     );
